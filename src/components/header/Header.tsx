@@ -9,8 +9,8 @@ const Header = () => {
             <div className='flex items-center gap-[30px]'>
                 <div className='flex gap-[20px]'>
                     <Link className="uppercase text-[12px] font-extrabold" to='/'>home</Link>
-                    <Link className="uppercase text-[12px] font-extrabold" to='/man'>man</Link>
-                    <Link className="uppercase text-[12px] font-extrabold" to='/woman'>woman</Link>
+                    <Link className="uppercase text-[12px] font-extrabold" to='/shop'>shop</Link>
+                    <Link className="uppercase text-[12px] font-extrabold" to='/about'>about</Link>
                     <Link className="uppercase text-[12px] font-extrabold" to='/blog'>blog</Link>
                 </div>
                 <div className='w-[2px] h-[15px] bg-[#393939]'></div>
