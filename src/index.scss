@@ -7,4 +7,7 @@
 body{
   font-family: 'Inter', sans-serif;
   color: #393939;
+  &._active{
+    overflow-y: hidden;
+  }
 }
