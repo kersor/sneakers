@@ -1,8 +1,9 @@
 import React, {FC} from 'react'
 import { useRegisterMutation } from '../../store/api/auth.api'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../hooks/redux'
+import { useAppDispatch, useError } from '../../hooks/redux'
 import { isLogin } from '../../store/slice/user/user.slice'
+import { Alert } from '@mui/material'
 
 interface SingUpProps {
     onClickIsLogin: (value: boolean) => void 
@@ -14,6 +15,7 @@ const SignUp: FC<SingUpProps> = ({onClickIsLogin}) => {
 
     const [singUp, setSignUp] = React.useState({name: '', email: '', password: ''})
     const [registerUser, {data, error, isError}] = useRegisterMutation()
+    const isErrorMessage = useError(error)
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -42,6 +44,8 @@ const SignUp: FC<SingUpProps> = ({onClickIsLogin}) => {
         }
     }, [data])
 
+
+
     return (
             <>
                 <h2 className='text-center text-[30px] font-bold mb-[50px]'>Create an account</h2>
@@ -53,6 +57,9 @@ const SignUp: FC<SingUpProps> = ({onClickIsLogin}) => {
                     <div className='text-center text-[14px] mt-[10px]'>
                         Do have an account? <button className='font-bold text-[#9bbdcd]' type="button" onClick={() => onClickIsLogin(true)}>Log in</button>
                     </div>
+                    {
+                        error && <Alert severity="error">{ isErrorMessage}</Alert>
+                    }
                 </form>
             </>
     )

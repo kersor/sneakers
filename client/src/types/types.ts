@@ -41,3 +41,11 @@ export interface IDecodeToken {
     iat: string,
     exp: string
 }
+
+export interface IErrorReq {
+    data: {
+        statusCode: number,
+        message: string,
+    },
+    status: number
+}

@@ -17,6 +17,7 @@ export class AuthService {
 
     async register(dto: RegisterAuthDto){
         const candidateEmail = await this.userModel.findOne({where: {email: dto.email}})
+        console.log(candidateEmail)
         if(candidateEmail) throw new HttpException('Пользователь с таким email уже зарегестрирован', HttpStatus.BAD_REQUEST)
 
         const candidateName = await this.userModel.findOne({where: {name: dto.name}})
@@ -50,13 +51,13 @@ export class AuthService {
     async login (dto: LoginAuthDto) {
 
         const candidateEmail = await this.userModel.findOne({where: {email: dto.email}})
-        if(!candidateEmail) throw new HttpException('Пароль или имя не верны 1 ', HttpStatus.BAD_REQUEST)
+        if(!candidateEmail) throw new HttpException('Пароль или имя не верны', HttpStatus.BAD_REQUEST)
 
         console.log(candidateEmail)
 
         const password = await bcrypt.compare(dto.password, candidateEmail.password)
         console.log(password)
-        if(!password)throw new HttpException('Пароль или имя не верны 2 ', HttpStatus.BAD_REQUEST)
+        if(!password)throw new HttpException('Пароль или имя не верны', HttpStatus.BAD_REQUEST)
 
         const access_token = await this.createToken(candidateEmail.id, candidateEmail.name)
         const user = await this.getUser(candidateEmail.id)

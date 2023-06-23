@@ -18,7 +18,7 @@ const Auth = () => {
     return (
         <div className='flex'>
             <div className='w-[50%] h-screen bg-white flex justify-center items-center'>
-                <div className='flex flex-col max-w-[330px] mx-auto w-full'>
+                <div className='flex flex-col max-w-[350px] mx-auto w-full'>
                     {
                         isLogin
                         ? <SignIn onClickIsLogin={onClickIsLogin} />

@@ -1,8 +1,9 @@
 import React, {FC} from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useAppDispatch } from '../../hooks/redux'
+import { useAppDispatch, useError } from '../../hooks/redux'
 import { useLoginMutation } from '../../store/api/auth.api'
 import { isLogin } from '../../store/slice/user/user.slice'
+import { Alert } from '@mui/material'
 
 interface SingInProps {
     onClickIsLogin: (value: boolean) => void 
@@ -14,6 +15,7 @@ const SignIn: FC<SingInProps> = ({onClickIsLogin}) => {
 
     const [singIn, setSignIn] = React.useState({email: '', password: ''})
     const [loginUser, {data, error, isError}] = useLoginMutation()
+    const isErrorMessage = useError(error)
 
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault()
@@ -52,6 +54,9 @@ const SignIn: FC<SingInProps> = ({onClickIsLogin}) => {
                     <div className='text-center text-[14px] mt-[10px]'>
                         Don't have an account? <button className='font-bold text-[#9bbdcd]' type="button"  onClick={() => onClickIsLogin(false)}>Sign up</button>
                     </div>
+                    {
+                        error && <Alert severity="error">{ isErrorMessage}</Alert>
+                    }
                 </form>
             </>
     )
