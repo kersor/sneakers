@@ -6,7 +6,6 @@ interface IUsersAttr {
     name: string;
     email: string;
     password: string;
-    telephone: string;
 }
 
 @Table({tableName: 'users', createdAt: false, updatedAt: false})
@@ -23,9 +22,6 @@ export class User extends Model<User, IUsersAttr> {
 
     @Column({type: DataType.STRING})
     password: string;
-
-    @Column({type: DataType.STRING, unique: true})
-    telephone: string;
 
     @BelongsToMany(() => Roles, () => RolesUser)
     roles: Roles[]

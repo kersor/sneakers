@@ -5,8 +5,43 @@ import Header from './components/header/Header'
 import Footer from './components/footer/Footer'
 import Shop from './pages/shop/Shop'
 import Auth from './pages/auth/Auth'
+import { useAppDispatch, useAppSelector, useDecodeToken } from './hooks/redux'
+import { useIsMeQuery } from './store/api/auth.api'
+import jwt from 'jwt-decode'
+import { IDecodeToken } from './types/types'
+import { skipToken } from '@reduxjs/toolkit/dist/query'
+import { isLogin } from './store/slice/user/user.slice'
 
 const App = () => {
+  const decodeToken = useDecodeToken()
+  const [decodeTokenData, setDecodeTokenData] = React.useState<null | number>()
+  const {data} = useIsMeQuery(decodeTokenData ?? skipToken)
+  const dispatch = useAppDispatch()
+
+  React.useEffect(() => {
+    if(decodeToken){
+      setDecodeTokenData(decodeToken.id)
+    }
+  }, [decodeToken])
+
+  React.useEffect(() => {
+    if(data){
+      const user = data[0]
+      const roles = user.roles
+      const role = roles.map(item =>  item.value)
+      const payload = {
+          user: {
+              id: user.id,
+              name: user.name,
+              roles: role
+          }
+      }
+
+      dispatch(isLogin(payload))
+    }
+  }, [data])
+
+
   return (
     <BrowserRouter>
       <Header />

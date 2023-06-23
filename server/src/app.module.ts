@@ -9,7 +9,6 @@ import { RolesUser } from './roles/roles-user.model';
 
 @Module({
   imports: [
-    AuthModule,
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`,
     }),
@@ -24,6 +23,7 @@ import { RolesUser } from './roles/roles-user.model';
       autoLoadModels: true
     }),
     RolesModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],

@@ -1,6 +1,10 @@
-export class CreateAuthDto {
+export class RegisterAuthDto {
     readonly name: string;
     readonly email: string;
     readonly password: string;
-    readonly telephone: string;
+}
+
+export class LoginAuthDto {
+    readonly email: string;
+    readonly password: string;
 }
