@@ -49,3 +49,15 @@ export interface IErrorReq {
     },
     status: number
 }
+
+export interface IAdminItems {
+    id: number,
+    name: string,
+    image_black: string,
+    image_white: string
+}
+
+export interface IAdminPages {
+    id: number;
+    page: () => JSX.Element; 
+}

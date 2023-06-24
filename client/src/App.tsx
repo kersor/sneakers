@@ -11,6 +11,7 @@ import jwt from 'jwt-decode'
 import { IDecodeToken } from './types/types'
 import { skipToken } from '@reduxjs/toolkit/dist/query'
 import { isLogin } from './store/slice/user/user.slice'
+import Admin from './pages/admin/Admin'
 
 const App = () => {
   const decodeToken = useDecodeToken()
@@ -29,12 +30,14 @@ const App = () => {
       const user = data[0]
       const roles = user.roles
       const role = roles.map(item =>  item.value)
+      const isAdmin = role.includes('ADMIN')
       const payload = {
           user: {
               id: user.id,
               name: user.name,
               roles: role
-          }
+          },
+          isAdmin: isAdmin
       }
 
       dispatch(isLogin(payload))
@@ -49,6 +52,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/shop' element={<Shop />} />
         <Route path='/auth' element={<Auth />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
       <Footer />
     </BrowserRouter>

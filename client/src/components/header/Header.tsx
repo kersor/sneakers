@@ -9,7 +9,7 @@ const Header = () => {
     const [isProfile, setIsProfile] = React.useState(false)
     const dispatch = useAppDispatch()
     const [firstName, setFirstName] = React.useState<string | undefined>('')
-    const {user, isAuth} = useAppSelector(state => state.userReducer)
+    const {user, isAuth, isAdmin} = useAppSelector(state => state.userReducer)
 
     React.useEffect(() => {
         if(user){
@@ -28,6 +28,7 @@ const Header = () => {
         setIsProfile(value)
     }
 
+    console.log(isAdmin)
 
     return (
         <>
@@ -36,11 +37,14 @@ const Header = () => {
                     <div className='h-[100px] flex items-center justify-between'>
                         <Link to='/'><img className='max-[500px]:max-w-[120px]' src="/image/logo.svg" alt="" /></Link>
                         <div className='flex items-center gap-[30px] max-[700px]:hidden'>
-                            <div className='flex gap-[20px]'>
+                            <div className='flex gap-[20px] items-center'>
                                 <Link className="uppercase text-[12px] font-extrabold" to='/'>home</Link>
                                 <Link className="uppercase text-[12px] font-extrabold" to='/shop'>shop</Link>
                                 <Link className="uppercase text-[12px] font-extrabold" to='/about'>about</Link>
                                 <Link className="uppercase text-[12px] font-extrabold" to='/blog'>blog</Link>
+                                {
+                                    isAdmin && <Link className="uppercase text-[12px] font-extrabold text-white bg-[#393939] py-[5px] px-[10px] rounded-[5px]" to='/admin'>Admin panel</Link>
+                                }
                             </div>
                             <div className='w-[2px] h-[15px] bg-[#393939]'></div>
                             <div className='flex items-center gap-[13px]'>

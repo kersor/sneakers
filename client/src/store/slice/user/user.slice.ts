@@ -10,7 +10,7 @@ interface IUserState {
     roles: string[] | null
   },
   isAuth: boolean | null,
-
+  isAdmin: boolean | null
 }
 
 const initialState: IUserState = {
@@ -19,7 +19,8 @@ const initialState: IUserState = {
     name: null,
     roles: null
   },
-  isAuth: false
+  isAuth: false,
+  isAdmin: false
 }
 
 export const userSlice = createSlice({
@@ -34,6 +35,7 @@ export const userSlice = createSlice({
       state.user.roles = user.roles
 
       state.isAuth = true
+      state.isAdmin = action.payload.isAdmin
     },
     logoutLogin: (state) => {
       state.user.id = null
@@ -41,6 +43,7 @@ export const userSlice = createSlice({
       state.user.roles = null
 
       state.isAuth = false
+      state.isAdmin = false
     }
   },
 })

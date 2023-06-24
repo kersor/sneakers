@@ -20,4 +20,5 @@ export class AuthController {
     async me(@Param('id') id: number){
         return this.authService.getUser(id)
     }
+
 }

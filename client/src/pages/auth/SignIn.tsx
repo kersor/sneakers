@@ -29,18 +29,20 @@ const SignIn: FC<SingInProps> = ({onClickIsLogin}) => {
             sessionStorage.setItem('token', access_token)
 
             const roles = user[0].roles
-            const role = roles.map(item =>  item.value)
+            const role = roles.map(item => item.value)
+            const isAdmin = role.includes('ADMIN')
             const payload = {
                 user: {
                     id: user[0].id,
                     name: user[0].name,
                     roles: role
                 },
-                access_token: access_token
+                isAdmin: isAdmin
             }
 
             dispatch(isLogin(payload))
-            navigate('/')
+            if(isAdmin) navigate('/admin')
+            else navigate('/')
         }
     }, [data])
 
