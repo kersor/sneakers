@@ -8,25 +8,50 @@ const items: IAdminItems[] = [
       id: 1,
       name: 'users',
       image_black: 'users-black.svg',
-      image_white: 'users-white.svg'
+      image_white: 'users-white.svg',
+      dop: false,
   },
   {
       id: 2,
       name: 'products',
       image_black: 'product-black.svg',
-      image_white: 'product-white.svg'
+      image_white: 'product-white.svg',
+      dop: false,
   },
   {
       id: 3,
-      name: 'comments',
-      image_black: 'comment-black.svg',
-      image_white: 'comment-white.svg'
+      name: 'color',
+      image_black: null,
+      image_white: null,
+      dop: true,
   },
   {
       id: 4,
+      name: 'gender',
+      image_black: null,
+      image_white: null,
+      dop: true,
+  },
+  {
+      id: 5,
+      name: 'brands',
+      image_black: null,
+      image_white: null,
+      dop: true,
+  },
+  {
+      id: 6,
+      name: 'comments',
+      image_black: 'comment-black.svg',
+      image_white: 'comment-white.svg',
+      dop: false,
+  },
+  {
+      id: 7,
       name: 'blog',
       image_black: 'blog-black.svg',
-      image_white: 'blog-white.svg'
+      image_white: 'blog-white.svg',
+      dop: false,
   }
 ]
 

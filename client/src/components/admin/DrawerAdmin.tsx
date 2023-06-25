@@ -34,7 +34,7 @@ const DrawerAdmin: FC<IDrawerAdminProps> = ({onClickActiveItem, activeItem, item
                         items.map(item => 
                             <li key={item.id}
                                 onClick={() => onClickActiveItem(item.id)} 
-                                className={`cursor-pointer flex gap-[10px] uppercase font-bold ${activeItem === item.id && 'bg-[#393939] text-white shadow-xl'} p-[15px] rounded-[20px] `}
+                                className={`${item.dop && 'ml-[50px] p-[10px]'} p-[10px] cursor-pointer flex gap-[10px] uppercase font-bold ${activeItem === item.id && 'bg-[#acb4bf] text-white shadow-2xl rounded-[5px]'}`}
                             >
                                 <img className='max-w-[17px]' src={`/image/${activeItem === item.id ? item.image_white : item.image_black}`} alt="" />
                                 {item.name}

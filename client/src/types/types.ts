@@ -53,8 +53,9 @@ export interface IErrorReq {
 export interface IAdminItems {
     id: number,
     name: string,
-    image_black: string,
-    image_white: string
+    image_black: string | null,
+    image_white: string | null,
+    dop: boolean
 }
 
 export interface IAdminPages {
