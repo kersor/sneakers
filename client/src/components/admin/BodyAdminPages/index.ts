@@ -6,6 +6,8 @@ import BodyAdminPagesBlog from "./BodyAdminPagesBlog";
 import BodyAdminPagesProductColor from "./BodyAdminPagesProductColor";
 import BodyAdminPagesProductGender from "./BodyAdminPagesProductGender";
 import BodyAdminPagesProductBrands from "./BodyAdminPagesProductBrands";
+import BodyAdminPagesUsersRoles from "./BodyAdminPagesUsersRoles";
+import BodyAdminPagesProductSizes from "./BodyAdminPagesProductSizes";
 
 export const pages: IAdminPages[] = [
     {
@@ -14,26 +16,34 @@ export const pages: IAdminPages[] = [
     },
     {
       id: 2,
-      page: BodyAdminPagesProduct
+      page: BodyAdminPagesUsersRoles
     },
     {
       id: 3,
-      page: BodyAdminPagesProductColor
+      page: BodyAdminPagesProduct
     },
     {
       id: 4,
-      page: BodyAdminPagesProductGender
+      page: BodyAdminPagesProductColor
     },
     {
       id: 5,
-      page: BodyAdminPagesProductBrands
+      page: BodyAdminPagesProductGender
     },
     {
       id: 6,
-      page: BodyAdminPagesComment
+      page: BodyAdminPagesProductBrands
     },
     {
       id: 7,
+      page: BodyAdminPagesProductSizes
+    },
+    {
+      id: 8,
+      page: BodyAdminPagesComment
+    },
+    {
+      id: 9,
       page: BodyAdminPagesBlog
     }
 ];
