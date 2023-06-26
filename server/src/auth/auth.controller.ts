@@ -21,4 +21,9 @@ export class AuthController {
         return this.authService.getUser(id)
     }
 
+    @Get()
+    async getAll(){
+        return this.authService.getUsers()
+    }
+
 }

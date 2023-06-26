@@ -1,10 +1,15 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { RolesService } from './roles.service';
-import { AddRoleDto, CreateRoleDto } from './dto/create-role.dto';
+import { AddRoleDto, CreateRoleDto, RemoveRoleDto } from './dto/create-role.dto';
 
 @Controller('roles')
 export class RolesController {
     constructor(private roleService: RolesService) {}
+
+    @Delete('/remove')
+    async removeRoleUser(@Body() dto: RemoveRoleDto){
+        return this.roleService.removeRoleUser(dto)
+    }
 
     @Post()
     async createRole(@Body() dto: CreateRoleDto){
@@ -16,9 +21,14 @@ export class RolesController {
         return this.roleService.foundRole(value)
     }
 
+    @Get()
+    async getRoles(){
+        return this.roleService.getRoles()
+    }
+
     @Delete('/:value')
     async deleteRole(@Param('value') value: string){
-        return this.roleService.foundRole(value)
+        return this.roleService.deleteRole(value)
     }
 
     @Post('/add')

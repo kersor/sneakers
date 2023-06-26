@@ -62,3 +62,14 @@ export interface IAdminPages {
     id: number;
     page: () => JSX.Element; 
 }
+
+export interface IRoleReq {
+    id: number,
+    value: string,
+    description: string
+}
+
+export interface IRoleRes {
+    value: string,
+    description: string
+}

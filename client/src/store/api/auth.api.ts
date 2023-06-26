@@ -23,7 +23,12 @@ const apiAuth = api.injectEndpoints({
           url: `/auth/me/${data}`,
       })
     }),
+    getAllUsers: build.query<IUserReq[], void>({
+      query: () => ({
+          url: `/auth`,
+      })
+    }),
   }),
 })
 
-export const { useRegisterMutation, useLoginMutation, useIsMeQuery } = apiAuth
+export const { useRegisterMutation, useLoginMutation, useIsMeQuery, useGetAllUsersQuery } = apiAuth

@@ -12,7 +12,7 @@ const BodyAdmin: FC<IDrawerAdminProps> = ({activeItem, items}) => {
   return (
     <div className='w-full h-screen py-[20px]'>
         <div className='bg-[#ffffff82] rounded-[20px] shadow-xl p-[20px] h-full relative'>
-          {pages.map((item: IAdminPages) => item.id === activeItem && <item.page />)}
+          {pages.map((item: IAdminPages) => item.id === activeItem && <item.page key={item.id} />)}
         </div>
     </div>
   )

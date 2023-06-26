@@ -76,4 +76,9 @@ export class AuthService {
         const fullUser = await this.userModel.findAll({where: {id}, include: {all: true}})
         return fullUser
     }
+
+    async getUsers () {
+        const fullUser = await this.userModel.findAll({include: {all: true}})
+        return fullUser
+    }
 }

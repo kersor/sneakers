@@ -28,8 +28,6 @@ const Header = () => {
         setIsProfile(value)
     }
 
-    console.log(isAdmin)
-
     return (
         <>
             <div className='fixed w-full h-[100px] top-0 left-0'>
