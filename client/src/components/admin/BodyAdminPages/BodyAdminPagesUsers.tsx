@@ -44,7 +44,7 @@ const BodyAdminPagesUsers = () => {
     const {data} = await removeRoleOneMutation({value: removeRolesValue, userId: +removeUserId}) as {data: IUserReq}
     const ready = users.filter(item => item.id !== data.id)
     setUsers([...ready, data])
-}
+  }
 
 
   return (

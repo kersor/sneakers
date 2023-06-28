@@ -6,6 +6,8 @@ import { User } from './auth/auth.model';
 import { RolesModule } from './roles/roles.module';
 import { Roles } from './roles/roles.model';
 import { RolesUser } from './roles/roles-user.model';
+import { ProductsColorModule } from './products-color/products-color.module';
+import { ProductsColor } from './products-color/products-color.model';
 
 @Module({
   imports: [
@@ -19,11 +21,12 @@ import { RolesUser } from './roles/roles-user.model';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
-      models: [User, Roles, RolesUser],
+      models: [User, Roles, RolesUser, ProductsColor],
       autoLoadModels: true
     }),
     RolesModule,
     AuthModule,
+    ProductsColorModule,
   ],
   controllers: [],
   providers: [],

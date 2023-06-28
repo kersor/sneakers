@@ -3,12 +3,17 @@ import { SelectChangeEvent } from '@mui/material/Select';
 import React from 'react'
 
 import './index.scss'
+import { useGetAllProductsColorQuery } from '../../../store/api/color.api';
+import { IProductsColorReq } from '../../../types/types';
 
 const BodyAdminPagesProduct = () => {
   const [brand, setBrand] = React.useState('')
   const [gender, setGender] = React.useState('')
   const [price, setPrice] = React.useState('')
   const [color, setColor] = React.useState('')
+  
+  const [colors, setColors] = React.useState<IProductsColorReq[]>([])
+  const {data: ProductsColor} = useGetAllProductsColorQuery()
 
   const onChangeBrand = (event: SelectChangeEvent) => {
     setBrand(event.target.value as string)
@@ -25,6 +30,12 @@ const BodyAdminPagesProduct = () => {
   const onChangeColor = (event: SelectChangeEvent) => {
     setColor(event.target.value as string)
   }
+
+  React.useEffect(() => {
+    if(ProductsColor) setColors(ProductsColor)
+  }, [ProductsColor])
+
+
 
   return (
     <div className='flex items-start gap-[20px]'>
@@ -256,9 +267,11 @@ const BodyAdminPagesProduct = () => {
                 label="Color"
                 onChange={onChangeColor}
               >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {
+                  colors && colors.map(item => (
+                    <MenuItem value={item.id} className='flex gap-[5px]'><div style={{backgroundColor: item.hex}} className="border border-[#393939] w-[20px] h-[20px] rounded-full"></div>{item.name}</MenuItem> 
+                  ))
+                }
               </Select>
             </FormControl>
 

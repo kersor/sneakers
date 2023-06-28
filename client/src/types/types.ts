@@ -73,3 +73,14 @@ export interface IRoleRes {
     value: string,
     description: string
 }
+
+export interface IProductsColorReq {
+    id: number,
+    name: string,
+    hex: string
+}
+
+export interface IProductsColorRes {
+    name: string,
+    hex: string
+}
