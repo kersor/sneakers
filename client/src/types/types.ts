@@ -84,3 +84,12 @@ export interface IProductsColorRes {
     name: string,
     hex: string
 }
+
+export interface IProductsGenderReq {
+    id: number,
+    name: string,
+}
+
+export interface IProductsGenderRes {
+    name: string,
+}

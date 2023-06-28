@@ -13,6 +13,7 @@ const BodyAdminPagesProductColor = () => {
     event.preventDefault()
     const {data} = await createOneProductsColorMutation(color) as {data: IProductsColorReq}
     setColors([...colors, data])
+    setColor({name: '', hex: ''})
   }
 
   React.useEffect(() => {

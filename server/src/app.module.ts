@@ -8,6 +8,8 @@ import { Roles } from './roles/roles.model';
 import { RolesUser } from './roles/roles-user.model';
 import { ProductsColorModule } from './products-color/products-color.module';
 import { ProductsColor } from './products-color/products-color.model';
+import { ProductsGenderModule } from './products-gender/products-gender.module';
+import { ProductsGender } from './products-gender/products-gender.model';
 
 @Module({
   imports: [
@@ -21,12 +23,13 @@ import { ProductsColor } from './products-color/products-color.model';
       username: process.env.DB_USER,
       password: process.env.DB_PASS,
       database: process.env.DB_NAME,
-      models: [User, Roles, RolesUser, ProductsColor],
+      models: [User, Roles, RolesUser, ProductsColor, ProductsGender],
       autoLoadModels: true
     }),
     RolesModule,
     AuthModule,
     ProductsColorModule,
+    ProductsGenderModule,
   ],
   controllers: [],
   providers: [],
